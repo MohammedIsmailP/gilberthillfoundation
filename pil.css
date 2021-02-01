@@ -1,6 +1,7 @@
 @font-face {
   font-family: lora;
-  src: url('media/Lora-Regular.ttf')
+  font-display: swap;
+  src: url('media/Lora-Regular.ttf');
 }
 
 body {

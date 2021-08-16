@@ -26,7 +26,7 @@ $.ajax({
                     <p class="content">${arr[2]}</p>
                     <p class="text-right"><b>- Hon'ble Chief Justice</b><br>
                     ${arr[1]}</p>
-                    <p class="text-right"><a href="media/PIL/ordjud (${c++}).pdf" target="_blank">Learn more..</a></p>
+                    <p class="text-right"><a class="underlined page-scroll" href="media/PIL/${arr[0]}.pdf" target="_blank">Learn more..</a></p>
                 </div>
                 </li>`
             }

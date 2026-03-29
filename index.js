@@ -1,57 +1,37 @@
-$(document).ready(()=>{
-    $(function() {
-        $('a.page-scroll').bind('click', function(event) {
-            var $anchor = $(this);
-            var bal = 0;
-            if ($anchor.parent()[0].nodeName == 'P')
-                bal = -55;
-            $('html, body').stop().animate({
-                scrollTop: $($anchor.attr('href')).offset().top + bal
-            }, 1500, 'easeInOutQuart');
-            event.preventDefault();
-        });
+$(document).ready(() => {
+    // Smooth scrolling
+    $('a.page-scroll').on('click', function (event) {
+        const $anchor = $(this);
+        let offset = 0;
+        if ($anchor.parent()[0].nodeName === 'P') offset = -55;
+        $('html, body').stop().animate({
+            scrollTop: $($anchor.attr('href')).offset().top + offset
+        }, 1500, 'easeInOutQuart');
+        event.preventDefault();
     });
 
     // Highlight the top nav as scrolling occurs
-    $('body').scrollspy({
-        target: '.navbar-fixed-top'
-    })
+    $('body').scrollspy({ target: '.navbar-fixed-top' });
 
     // Closes the Responsive Menu on Menu Item Click
-    $('.navbar-collapse ul li a').click(function() {
+    $('.navbar-collapse ul li a').click(function () {
         $('.navbar-toggle:visible').click();
     });
 
-});
+    // Dynamic PIL (first 3 entries only)
+    $.getJSON('media/pil.json', (data) => {
+        const timeline = document.querySelector('.timeline');
+        let count = 0;
 
-
-// Dynamic PIL
-$.ajax({
-    type: 'GET',
-    url: 'media/pil.txt',
-    dataType: 'text',
-    success: (res) => {
-        var c = 1, i = 0;
-        var pil = '';
-        res = res.split('\n');
-        while (c < 4) {
-            arr = res[i++].split('\t');
-            if (arr.length == 3) {
-                pil += `<li class="timeline-item">
-                <div class="timeline-info">
-                    <span>${arr[0]}</span>
-                </div>
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <p class="content">${arr[2]}</p>
-                    <p class="text-right"><b>- Hon'ble Chief Justice</b><br>
-                    ${arr[1]}</p>
-                </div>
-                </li>`
-                c++;
+        for (const group of data) {
+            for (const entry of group.entries) {
+                if (count >= 3) break;
+                timeline.appendChild(buildTimelineItem(entry));
+                count++;
             }
+            if (count >= 3) break;
         }
-        pil+=`<li></li>`
-        $('.timeline')[0].innerHTML += pil;
-    }
+
+        timeline.appendChild(document.createElement('li'));
+    });
 });

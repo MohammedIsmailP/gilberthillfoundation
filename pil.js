@@ -1,36 +1,30 @@
-$.ajax({
-    type: 'GET',
-    url: 'media/pil.txt',
-    dataType: 'text',
-    success: (res) => {
-        var c = 1;
-        var pil = '';
-        res = res.split('\n');
-        for (let row of res) {
-            arr = row.split('\t');
-            if (arr.length == 1) {
-                pil += `<li class="timeline-item period">
-                    <div class="timeline-info"></div>
-                    <div class="timeline-marker"></div>
-                    <div class="timeline-content">
-                        <h2 class="timeline-title">${arr}</h2>
-                    </div>
-                </li>`;
-            } else {
-                pil += `<li class="timeline-item">
-                <div class="timeline-info">
-                    <span>${arr[0]}</span>
-                </div>
-                <div class="timeline-marker"></div>
-                <div class="timeline-content">
-                    <p class="content">${arr[2]}</p>
-                    <p class="text-right"><b>- Hon'ble Chief Justice</b><br>
-                    ${arr[1]}</p>
-                    <p class="text-right"><a class="underlined page-scroll" href="media/PIL/${arr[0]}.pdf" target="_blank">Learn more..</a></p>
-                </div>
-                </li>`
-            }
+$.getJSON('media/pil.json', (data) => {
+    const timeline = document.querySelector('.timeline');
+
+    for (const group of data) {
+        // Year divider
+        const period = document.createElement('li');
+        period.className = 'timeline-item period';
+
+        const periodInfo = document.createElement('div');
+        periodInfo.className = 'timeline-info';
+        const periodMarker = document.createElement('div');
+        periodMarker.className = 'timeline-marker';
+        const periodContent = document.createElement('div');
+        periodContent.className = 'timeline-content';
+        const periodTitle = document.createElement('h2');
+        periodTitle.className = 'timeline-title';
+        periodTitle.textContent = group.year;
+        periodContent.appendChild(periodTitle);
+
+        period.appendChild(periodInfo);
+        period.appendChild(periodMarker);
+        period.appendChild(periodContent);
+        timeline.appendChild(period);
+
+        // Entries
+        for (const entry of group.entries) {
+            timeline.appendChild(buildTimelineItem(entry, { showPdfLink: true }));
         }
-        $('.timeline')[0].innerHTML += pil;
     }
 });

@@ -110,6 +110,11 @@ fieldset[disabled] .btn-primary.active {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+.btn-xl:visited,
+.btn-xl:active {
+    color: #fff;
+}
+
 .btn-xl.disabled,
 .btn-xl[disabled],
 fieldset[disabled] .btn-xl,
@@ -179,6 +184,12 @@ header {
     animation: bounce 2s infinite;
 }
 
+.scroll-indicator:visited,
+.scroll-indicator:focus,
+.scroll-indicator:active {
+    color: #fff;
+}
+
 .scroll-indicator:hover {
     opacity: 1;
     color: darkgoldenrod;
@@ -218,7 +229,8 @@ header .intro-text .intro-lead b {
 }
 
 section {
-    padding-top: 40px;
+    margin-top: 20px;
+    padding-top: 20px;
 }
 
 section h2.section-heading {
@@ -227,12 +239,6 @@ section h2.section-heading {
 
 section h3.section-subheading {
     margin-bottom: 30px;
-}
-
-@media (max-width: 767px) {
-    section {
-        padding-top: 50px;
-    }
 }
 
 #hill-intro h3 {

@@ -19,7 +19,7 @@ $(document).ready(() => {
     });
 
     // Dynamic PIL (first 3 entries only)
-    $.getJSON('media/pil.json', (data) => {
+    $.getJSON('media/pil.json').done((data) => {
         const timeline = document.querySelector('.timeline');
         let count = 0;
 
@@ -33,5 +33,11 @@ $(document).ready(() => {
         }
 
         timeline.appendChild(document.createElement('li'));
+    }).fail(() => {
+        const timeline = document.querySelector('.timeline');
+        const msg = document.createElement('li');
+        msg.className = 'timeline-error';
+        msg.textContent = 'Unable to load timeline data.';
+        timeline.appendChild(msg);
     });
 });

@@ -1,4 +1,4 @@
-$.getJSON('media/pil.json', (data) => {
+$.getJSON('media/pil.json').done((data) => {
     const timeline = document.querySelector('.timeline');
 
     for (const group of data) {
@@ -27,4 +27,10 @@ $.getJSON('media/pil.json', (data) => {
             timeline.appendChild(buildTimelineItem(entry, { showPdfLink: true }));
         }
     }
+}).fail(() => {
+    const timeline = document.querySelector('.timeline');
+    const msg = document.createElement('li');
+    msg.className = 'timeline-error';
+    msg.textContent = 'Unable to load timeline data.';
+    timeline.appendChild(msg);
 });

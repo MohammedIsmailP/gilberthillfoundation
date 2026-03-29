@@ -41,9 +41,13 @@ header {
 }
 
 header {
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-direction: column;
     flex-direction: column;
+    -webkit-align-items: center;
     align-items: center;
+    -webkit-justify-content: center;
     justify-content: center;
     min-height: 100vh;
     position: relative;
@@ -55,6 +59,7 @@ header {
     color: #fff;
     font-size: 24px;
     opacity: 0.7;
+    -webkit-animation: bounce 2s infinite;
     animation: bounce 2s infinite;
 }
 
@@ -70,10 +75,15 @@ header {
     background: none;
 }
 
+@-webkit-keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { -webkit-transform: translateY(0); transform: translateY(0); }
+    40% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+    60% { -webkit-transform: translateY(-5px); transform: translateY(-5px); }
+}
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-10px); }
-    60% { transform: translateY(-5px); }
+    0%, 20%, 50%, 80%, 100% { -webkit-transform: translateY(0); transform: translateY(0); }
+    40% { -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+    60% { -webkit-transform: translateY(-5px); transform: translateY(-5px); }
 }
 
 header .intro-text {
@@ -114,7 +124,9 @@ header .intro-text .intro-lead b {
     }
 
     .reverse {
+        display: -webkit-flex !important;
         display: flex !important;
+        -webkit-flex-direction: column-reverse;
         flex-direction: column-reverse;
     }
 }

@@ -1,12 +1,3 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-top: 0;
-}
-
 div.header {
     height: 200px;
     text-align: center;
@@ -19,43 +10,6 @@ div.header {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-}
-
-h2.section-heading {
-    font-size: 30px;
-}
-
-.example-header {
-    background: #3d4351;
-    color: #fff;
-    font-weight: 300;
-    padding: 3em 1em;
-    text-align: center;
-}
-
-.example-header h1 {
-    color: #fff;
-    font-weight: 300;
-    margin-bottom: 20px;
-}
-
-.example-header p {
-    font-size: 16px;
-    text-transform: uppercase;
-    line-height: 1.75;
-    letter-spacing: 3px;
-    font-weight: 700;
-}
-
-.example-title {
-    text-align: center;
-    margin: 30px 0px;
-    border-bottom: 1px solid #e4eaec;
-}
-
-.example-title p {
-    margin: 0 auto;
-    max-width: 400px;
 }
 
 /*==================================
@@ -118,7 +72,7 @@ h2.section-heading {
 }
 
 .timeline-marker:before {
-    background: darkgoldenrod;
+    background: var(--color-accent);
     border: 3px solid transparent;
     border-radius: 100%;
     content: "";
@@ -148,17 +102,12 @@ h2.section-heading {
 
 .timeline-item:not(.period):hover .timeline-marker:before {
     background: transparent;
-    border: 3px solid darkgoldenrod;
+    border: 3px solid var(--color-accent);
 }
 
 /*----- TIMELINE CONTENT -----*/
 .timeline-content {
     padding-bottom: 40px;
-}
-
-.timeline-content p {
-    font-size: 16px;
-    line-height: 1.75;
 }
 
 .timeline-content p:last-child {
@@ -211,10 +160,6 @@ h2.section-heading {
     MOD: TIMELINE SPLIT
 ----------------------------------------------*/
 @media (min-width: 768px) {
-    h2.section-heading {
-        font-size: 40px;
-    }
-
     .timeline-content p {
         font-size: 18px;
     }
@@ -345,14 +290,3 @@ h2.section-heading {
     }
 }
 
-/*----------------------------------------------
-    MOD: MARKER OUTLINE
-----------------------------------------------*/
-.marker-outline .timeline-marker:before {
-    background: transparent;
-    border-color: #ff6b6b;
-}
-
-.marker-outline .timeline-item:hover .timeline-marker:before {
-    background: #ff6b6b;
-}

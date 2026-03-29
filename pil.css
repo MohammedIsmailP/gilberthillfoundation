@@ -47,17 +47,9 @@ h2.section-heading {
     font-weight: 700;
 }
 
-.container-fluid .row {
-    padding: 0 0 4em 0;
-}
-
-.container-fluid .row:nth-child(even) {
-    background: #f1f4f5;
-}
-
 .example-title {
     text-align: center;
-    margin: 60px 0px;
+    margin: 30px 0px;
     border-bottom: 1px solid #e4eaec;
 }
 
@@ -202,12 +194,12 @@ h2.section-heading {
 
 .period .timeline-marker:after {
     content: "";
-    height: 32px;
+    height: 30px;
     top: auto;
 }
 
 .period .timeline-content {
-    padding: 40px 0 70px;
+    padding: 30px 0 60px;
 }
 
 .period .timeline-title {
@@ -339,7 +331,7 @@ h2.section-heading {
     }
 
     .timeline-centered .timeline-item.period {
-        padding: 50px 0 90px;
+        padding: 40px 0 70px;
     }
 
     .timeline-centered .period .timeline-marker:after {

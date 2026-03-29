@@ -1,9 +1,3 @@
-body {
-    overflow-x: hidden;
-    font-family: "Lora", "Roboto Slab", "Helvetica Neue", Helvetica, Arial,
-        sans-serif;
-}
-
 .text-muted {
     color: #777;
 }
@@ -108,25 +102,12 @@ fieldset[disabled] .btn-primary.active {
 .btn-xl,
 .btn-xl:focus {
     text-decoration: none;
-    display: inline-block;
     margin-top: 30px;
     padding: 15px 35px;
-    border: 2px solid white;
-    border-radius: 10px;
     text-transform: uppercase;
     font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 20px;
-    color: #fff;
     background-color: rgba(255, 255, 255, 0.1);
-    transition: 0.5s;
-}
-
-.btn-xl:hover,
-.open .dropdown-toggle.btn-xl {
-    color: darkgoldenrod;
-    background-color: #fff;
-    transition: 0.5s;
-    padding: 20px 40px;
 }
 
 .btn-xl.disabled,
@@ -252,10 +233,6 @@ section h3.section-subheading {
     section {
         padding-top: 50px;
     }
-}
-
-body {
-    background-color: #f9f8f6;
 }
 
 #hill-intro h3 {
@@ -467,25 +444,15 @@ body {
     display: block;
     height: 220px;
     width: 100vw;
-    background: linear-gradient(to bottom, #f9f8f6, #feb 60%, #888);
+    background: linear-gradient(to bottom, #f9f8f6, #feb 50%, #888);
     margin-top: -230px;
 }
 
 a.load {
-    display: inline-block;
     font-size: 25px;
     margin: 30px auto;
-    font-weight: 600;
-    color: #fff;
-    transition: 0.5s;
-}
-
-a.load:hover {
-    color: darkgoldenrod;
-    background-color: #fff;
     padding: 10px 20px;
-    border-radius: 10px;
-    transition: 0.5s;
+    font-weight: 600;
 }
 
 .service-heading {

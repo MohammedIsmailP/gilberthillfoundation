@@ -1,3 +1,10 @@
+body {
+    overflow-x: hidden;
+    font-family: "Lora", "Roboto Slab", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+    background-color: #f9f8f6;
+}
+
 @font-face {
     font-family: lora;
     font-display: swap;
@@ -53,6 +60,24 @@ footer span.copyright {
     font-weight: 500;
     letter-spacing: 1px;
     line-height: 40px;
+}
+
+.btn-gradient {
+    display: inline-block;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: #fff;
+    background-image: linear-gradient(to left, darkgoldenrod, purple);
+    background-size: 0 100%;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    transition: 0.5s;
+}
+
+.btn-gradient:hover {
+    color: #fff;
+    background-size: 100% 100%;
+    border-color: darkgoldenrod;
 }
 
 h3.section-subheading {

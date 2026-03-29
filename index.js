@@ -1,11 +1,12 @@
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling with easeInOutQuart
     function easeInOutQuart(t) {
         return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t;
     }
 
     function scrollToTarget(target, extraOffset) {
-        const navbarHeight = document.querySelector('.navbar-fixed-top').offsetHeight;
+        const navbar = document.querySelector('.fixed-top');
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
         let offset = -navbarHeight + (extraOffset || 0);
 
         const start = window.scrollY;
@@ -22,48 +23,50 @@ $(document).ready(() => {
         requestAnimationFrame(step);
     }
 
-    $('a.page-scroll').on('click', function (event) {
-        event.preventDefault();
-        const href = $(this).attr('href');
-        const target = document.querySelector(href);
-        if (!target) return;
+    document.querySelectorAll('a.page-scroll').forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const href = link.getAttribute('href');
+            const target = document.querySelector(href);
+            if (!target) return;
 
-        const extraOffset = $(this).parent()[0].nodeName === 'P' ? -55 : 0;
-        const mobileMenu = $('.navbar-toggle:visible');
+            const extraOffset = link.parentElement.nodeName === 'P' ? -55 : 0;
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navCollapse = document.querySelector('.navbar-collapse');
 
-        if (mobileMenu.length) {
-            // Close menu first, then scroll after collapse completes
-            $('.navbar-collapse').one('hidden.bs.collapse', () => scrollToTarget(target, extraOffset));
-            mobileMenu.click();
-        } else {
-            scrollToTarget(target, extraOffset);
-        }
+            if (navbarToggler && window.getComputedStyle(navbarToggler).display !== 'none' && navCollapse.classList.contains('show')) {
+                // Close menu first, then scroll after collapse completes
+                navCollapse.addEventListener('hidden.bs.collapse', () => scrollToTarget(target, extraOffset), { once: true });
+                bootstrap.Collapse.getOrCreateInstance(navCollapse).hide();
+            } else {
+                scrollToTarget(target, extraOffset);
+            }
+        });
     });
-
-    // Highlight the top nav as scrolling occurs
-    const navHeight = document.querySelector('.navbar-fixed-top').offsetHeight;
-    $('body').scrollspy({ target: '.navbar-fixed-top', offset: navHeight + 20 });
 
     // Dynamic PIL (first 3 entries only)
-    $.getJSON('media/pil.json').done((data) => {
-        const timeline = document.querySelector('.timeline');
-        let count = 0;
+    fetch('media/pil.json')
+        .then(res => res.json())
+        .then(data => {
+            const timeline = document.querySelector('.timeline');
+            let count = 0;
 
-        for (const group of data) {
-            for (const entry of group.entries) {
+            for (const group of data) {
+                for (const entry of group.entries) {
+                    if (count >= 3) break;
+                    timeline.appendChild(buildTimelineItem(entry));
+                    count++;
+                }
                 if (count >= 3) break;
-                timeline.appendChild(buildTimelineItem(entry));
-                count++;
             }
-            if (count >= 3) break;
-        }
 
-        timeline.appendChild(document.createElement('li'));
-    }).fail(() => {
-        const timeline = document.querySelector('.timeline');
-        const msg = document.createElement('li');
-        msg.className = 'timeline-error';
-        msg.textContent = 'Unable to load timeline data.';
-        timeline.appendChild(msg);
-    });
+            timeline.appendChild(document.createElement('li'));
+        })
+        .catch(() => {
+            const timeline = document.querySelector('.timeline');
+            const msg = document.createElement('li');
+            msg.className = 'timeline-error';
+            msg.textContent = 'Unable to load timeline data.';
+            timeline.appendChild(msg);
+        });
 });

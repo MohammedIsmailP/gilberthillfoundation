@@ -38,6 +38,23 @@ h2.section-heading {
     padding: 20px;
 }
 
+footer {
+    padding: 15px 0;
+    text-align: center;
+    background-color: #222;
+    border-top: 3px solid darkgoldenrod;
+    color: #999;
+}
+
+footer span.copyright {
+    text-transform: none;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 40px;
+}
+
 h3.section-subheading {
     text-transform: none;
     font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;

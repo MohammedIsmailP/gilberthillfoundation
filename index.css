@@ -608,23 +608,6 @@ section#contact .text-danger {
     color: #e74c3c;
 }
 
-footer {
-    padding: 25px 0;
-    text-align: center;
-}
-
-footer span.copyright {
-    text-transform: none;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 40px;
-}
-
-footer ul.quicklinks {
-    margin-bottom: 0;
-    text-transform: none;
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 40px;
-}
 
 ul.social-buttons {
     margin-bottom: 0;

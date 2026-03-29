@@ -385,23 +385,28 @@ section h3.section-subheading {
     transform: scale(0);
 }
 
-#hill-intro figure:hover h2 {
+#hill-intro figure:hover h2,
+#hill-intro figure:focus-within h2 {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
 
 #hill-intro figure:hover figcaption::before,
-#hill-intro figure:hover p {
+#hill-intro figure:hover p,
+#hill-intro figure:focus-within figcaption::before,
+#hill-intro figure:focus-within p {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
 }
 
-#hill-intro figure:hover figcaption {
+#hill-intro figure:hover figcaption,
+#hill-intro figure:focus-within figcaption {
     background-color: rgba(58, 52, 42, 0);
 }
 
-#hill-intro figure:hover img {
+#hill-intro figure:hover img,
+#hill-intro figure:focus-within img {
     opacity: 0.4;
 }
 

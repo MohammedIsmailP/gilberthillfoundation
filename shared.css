@@ -8,7 +8,7 @@ body {
 @font-face {
     font-family: lora;
     font-display: swap;
-    src: url("media/Lora-Regular.ttf");
+    src: url("media/Lora-Regular.woff2") format("woff2");
 }
 
 a.underlined,

@@ -237,7 +237,7 @@ header .intro-text .intro-lead b {
 }
 
 section {
-    padding-top: 90px;
+    padding-top: 40px;
 }
 
 section h2.section-heading {
@@ -245,13 +245,17 @@ section h2.section-heading {
 }
 
 section h3.section-subheading {
-    margin-bottom: 75px;
+    margin-bottom: 30px;
 }
 
 @media (max-width: 767px) {
     section {
         padding-top: 50px;
     }
+}
+
+body {
+    background-color: #f9f8f6;
 }
 
 #hill-intro h3 {
@@ -274,6 +278,16 @@ section h3.section-subheading {
     min-height: 400px;
     object-fit: cover;
     margin: 0px auto;
+    border: 8px solid #fff;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 10px 30px rgba(0, 0, 0, 0.22);
+    border-radius: 2px;
+}
+
+.img-caption {
+    font-size: 13px;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
 }
 
 .grid {
@@ -453,7 +467,7 @@ section h3.section-subheading {
     display: block;
     height: 220px;
     width: 100vw;
-    background: linear-gradient(to bottom, #fff, #feb 60%, #999);
+    background: linear-gradient(to bottom, #f9f8f6, #feb 60%, #888);
     margin-top: -230px;
 }
 

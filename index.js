@@ -30,10 +30,11 @@ $(document).ready(() => {
 
         const extraOffset = $(this).parent()[0].nodeName === 'P' ? -55 : 0;
         const mobileMenu = $('.navbar-toggle:visible');
+        const navbarCollapse = $('.navbar-collapse');
 
-        if (mobileMenu.length) {
+        if (mobileMenu.length && navbarCollapse.hasClass('in')) {
             // Close menu first, then scroll after collapse completes
-            $('.navbar-collapse').one('hidden.bs.collapse', () => scrollToTarget(target, extraOffset));
+            navbarCollapse.one('hidden.bs.collapse', () => scrollToTarget(target, extraOffset));
             mobileMenu.click();
         } else {
             scrollToTarget(target, extraOffset);
